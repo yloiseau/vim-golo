@@ -16,8 +16,6 @@ syn case match
 syn region goloBlock start="{" end="}" transparent fold
 
 "## Errors
-" Java keywords that does not exists in Golo
-syn keyword goloError class
 " trailing semicolon
 syn match goloError ";\s*$" display
 " trailing white space
@@ -87,6 +85,7 @@ syn match goloOperator ":" display
 syn match goloOperator "?:" display
 syn match goloOperator "=="  display
 syn match goloOperator "!=" display
+syn match goloOperator "->" display
 syn match goloOperator "=" display
 syn match goloOperator "+" display
 syn match goloOperator "-" display
@@ -106,6 +105,7 @@ hi def link goloOperator Operator
 "## Comments and doc
 syn keyword goloTodo contained TODO FIXME XXX NOTE
 syn match goloComment "#.*$" display contains=@Spell,goloTodo
+syn match goloCommentSection "^#== .*$" contains=@Spell
 
 if s:golo_with_markdown
   syn include @Markdown syntax/markdown.vim
@@ -119,6 +119,7 @@ endif
 
 hi def link goloTodo Todo
 hi def link goloComment Comment
+hi def link goloCommentSection SpecialComment
 
 
 "## Literal and Special Values
